@@ -1,0 +1,127 @@
+<form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+
+  <div class="row">
+
+    <div class="col-12">
+      <input-field formControlName="nome" id="nome" label="Nome" [control]="formulario.get('nome')"></input-field>
+    </div>
+
+    <div class="col-6">
+      <input-field formControlName="email" id="email" label="Email" [control]="formulario.get('email')"
+                   type="email"></input-field>
+    </div>
+
+    <div class="col-6">
+      <input-field formControlName="confirmar_email" id="confirmar_email" label="Confirmar Email"
+                   [control]="formulario.get('confirmar_email')" type="email"></input-field>
+    </div>
+
+  </div>
+
+  <div class="row" formGroupName="endereco">
+
+    <div class="col-3">
+      <input-field formControlName="cep" id="cep" label="CEP" [control]="formulario.get('endereco.cep')"
+                   (blur)="consultaCEP()"></input-field>
+    </div>
+
+    <div class="col-3">
+      <input-field formControlName="numero" id="numero" label="Número"
+                   [control]="formulario.get('endereco.numero')"></input-field>
+    </div>
+
+    <div class="col-6">
+      <input-field formControlName="complemento" id="complemento" label="Complemento"
+                   [control]="formulario.get('endereco.complemento')"></input-field>
+    </div>
+
+    <div class="col-12">
+      <input-field formControlName="rua" id="rua" label="Rua"
+                   [control]="formulario.get('endereco.rua')"></input-field>
+    </div>
+
+    <div class="col-5">
+      <input-field formControlName="bairro" id="bairro" label="Bairro"
+                   [control]="formulario.get('endereco.bairro')"></input-field>
+    </div>
+
+
+    <div class="col-2">
+      <label for="estado">Estado</label>
+      <select id="estado" type="text" class="form-control" formControlName="estado"
+              [inputError]="formulario.get('endereco.estado')" (change)="carregarCidades()">
+        <option *ngFor="let estado of estados " [value]="estado.sigla">{{estado.nome}}</option>
+      </select>
+      <error-message [control]="formulario.get('endereco.estado')" label="Estado"></error-message>
+    </div>
+
+    <div class="col-5">
+      <label for="cidade">Cidade</label>
+      <select id="cidade" type="text" class="form-control" formControlName="cidade"
+              [inputError]="formulario.get('endereco.cidade')">
+        <option *ngFor="let cidade of cidades" [value]="cidade.id">{{cidade.nome}}</option>
+      </select>
+      <error-message [control]="formulario.get('endereco.cidade')" label="Cidade"></error-message>
+    </div>
+
+  </div>
+
+  <div class="row">
+
+    <div class="col-4">
+      <label for="cargo">Cargo</label>
+      <select id="cargo" type="text" class="form-control" formControlName="cargo">
+        <option *ngFor="let cargo of cargos " [ngValue]="cargo">{{cargo.descricao}}</option>
+      </select>
+    </div>
+
+    <div class="col-4">
+      <label for="tecnologias">Tecnologias</label>
+      <select id="tecnologias" type="text" class="form-control" formControlName="tecnologias" multiple>
+        <option *ngFor="let tecnologia of tecnologias " [ngValue]="tecnologia.nome">{{tecnologia.descricao}}</option>
+      </select>
+    </div>
+
+    <div class="col-4">
+      <label for="newsletter">Newsletter</label>
+      <div id="newsletter">
+        <label class="radio-inline" *ngFor="let opcao of newsletterOpcoes">
+          <input type="radio" formControlName="newsletter" [value]="opcao.valor"> {{ opcao.descricao }} &nbsp;
+        </label>
+      </div>
+    </div>
+
+    <div class="col-4">
+      <label for="termos">Termos</label>
+      <div id="termos">
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" formControlName="termos"
+                 [inputError]="formulario.get('termos')">
+          <label class="form-check-label">Aceito os termos</label>
+        </div>
+        <error-message [control]="formulario.get('termos')"
+                       [customMessages]="{required: 'Você deve aceitar os termos'}"></error-message>
+      </div>
+    </div>
+
+    <div class="col-4">
+      <label for="frameworks">Frameworks</label>
+      <div id="frameworks">
+        <div class="form-check form-check-inline" *ngFor="let framework of frameworks; let i = index"
+             formArrayName="frameworks">
+          <input class="form-check-input" type="checkbox" [formControlName]="i"
+                 [inputError]="formulario.get('frameworks')">
+          <label class="form-check-label">{{framework.descricao}}</label>
+        </div>
+        <error-message [control]="formulario.get('frameworks')"
+                       [customMessages]="{required: 'Você deve selecionar pelo menos um framework'}"></error-message>
+      </div>
+    </div>
+
+  </div>
+
+  <br>
+
+  <button type="submit" class="btn btn-primary">Salvar</button>
+
+</form>

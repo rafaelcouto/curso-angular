@@ -1,0 +1,57 @@
+<section class="property-binding">
+
+  <!--
+      <article>
+    <h3>Interpolação</h3>
+    <p>String renderizada com Interpolação {{ url }}</p>
+    <p>Resultado de 1 + 1 = {{ 1+ getValor() }}</p>
+  </article>
+
+  <article>
+      <img src={{urlImagem}}>
+      <img [src]="urlImagem">
+      <img bind-src="urlImagem">
+  </article>
+  -->
+
+  <!--
+  <article>
+    <h3>Class e Style Binding</h3>
+    <div class="row">
+      <select class="form-control" #classe (change)="0">
+        <option value="alert-success">Sucesso</option>
+        <option value="alert-info">Info</option>
+        <option value="alert-warning">Alerta</option>
+        <option value="alert-danger">Erro</option>
+      </select>
+      <br>
+      <br>
+
+      <div class="alert {{classe.value}}" style>
+        Texto colorido
+      </div>
+
+      <div class="alert" role="alert" [class.alert-success]="classe.value == 'alert-success'">Sucesso</div>
+      <div class="alert" role="alert" [class.alert-info]="classe.value == 'alert-info'">Info</div>
+      <div class="alert" role="alert" [class.alert-warning]="classe.value == 'alert-warning'">Alerta</div>
+      <div class="alert" role="alert" [class.alert-danger]="classe.value == 'alert-danger'">Erro</div>
+
+      <div class="alert alert-danger" [style.display]="classe.value == 'alert-danger' ? 'block' : 'none'">
+        ERRO
+      </div>
+
+    </div>
+  </article>
+-->
+
+  <button class="btn btn-primary" (click)="botaoClicado()">Me clique</button>
+
+  <input type="text" (keyup)="onKeyUp($event)" (keyup.enter)="salvarValor($event.target.value)"
+    (blur)="salvarValor($event.target.value)">
+
+  <p>{{ valorAtual }}</p>
+  <p>{{ valorSalvo }}</p>
+
+  <p (mouseover)="onMouseOver()" (mouseout)="onMouseOver()" [class.highlight]="isMouseOver">Passe o mouse sobre mim</p>
+
+</section>

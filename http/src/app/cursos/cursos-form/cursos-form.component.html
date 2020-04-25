@@ -1,0 +1,13 @@
+<form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+
+  <div class="row">
+    <div class="col-12">
+      <input-field formControlName="nome" id="nome" label="Nome" [control]="formulario.get('nome')"></input-field>
+    </div>
+  </div>
+
+  <br>
+
+  <button type="submit" class="btn btn-primary">Salvar</button>
+
+</form>

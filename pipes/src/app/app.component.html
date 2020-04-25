@@ -1,0 +1,38 @@
+<p>{{ objeto.titulo | camelCase }}</p>
+<p>{{ objeto.valor | currency:'BRL':true }}</p>
+
+<h1>Livros</h1>
+
+<input type="text" #novoLivro>
+<button (click)="addLivro(novoLivro.value)">Add</button>
+
+
+<input type="text" [(ngModel)]="filtro">
+
+<h2>Pipe Puro</h2>
+
+<ul>
+  <li *ngFor="let livro of livros | filtroArray:filtro">
+    {{ livro }}
+  </li>
+</ul>
+
+
+<h2>Pipe Impuro</h2>
+
+<ul>
+  <li *ngFor="let livro of livros | filtroArrayImpuro:filtro">
+    {{ livro }}
+  </li>
+</ul>
+
+
+<h2>Maneira correta</h2>
+
+<ul>
+  <li *ngFor="let livro of obterLivros()">
+    {{ livro }}
+  </li>
+</ul>
+ 
+{{ valorAsync | async | uppercase }}

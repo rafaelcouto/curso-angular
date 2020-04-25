@@ -1,0 +1,12 @@
+<h1>Lista de cursos</h1>
+
+<input type="text" [(ngModel)]="curso">
+<button (click)="addCurso()">Add</button>
+
+<ul>
+    <li *ngFor="let curso of cursos">
+        {{curso}}
+    </li>
+</ul>
+
+<app-receber-curso-criado></app-receber-curso-criado>

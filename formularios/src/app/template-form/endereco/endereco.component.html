@@ -1,0 +1,50 @@
+<div class="row">
+
+  <div class="col-3">
+    <label for="cep">CEP</label>
+    <input id="cep" type="text" class="form-control" name="cep" [(ngModel)]="endereco.cep" required #cep="ngModel"
+           [inputError]="cep" (blur)="consultaCEP(endereco.cep)">
+    <invalid-feedback errorMessage="CEP é obrigatório" [model]="cep"></invalid-feedback>
+  </div>
+
+  <div class="col-3">
+    <label for="numero">Número</label>
+    <input id="numero" type="text" class="form-control" name="numero" [(ngModel)]="endereco.numero" required
+           #numero="ngModel" [inputError]="numero">
+    <invalid-feedback errorMessage="Número é obrigatório" [model]="numero"></invalid-feedback>
+  </div>
+
+  <div class="col-6">
+    <label for="complemento">Complemento</label>
+    <input id="complemento" type="text" class="form-control" name="complemento" [(ngModel)]="endereco.complemento">
+  </div>
+
+  <div class="col-12">
+    <label for="rua">Rua</label>
+    <input id="rua" type="text" class="form-control" name="rua" [(ngModel)]="endereco.rua" required #rua="ngModel"
+           [inputError]="rua">
+    <invalid-feedback errorMessage="Rua é obrigatório" [model]="rua"></invalid-feedback>
+  </div>
+
+  <div class="col-5">
+    <label for="bairro">Bairro</label>
+    <input id="bairro" type="text" class="form-control" name="bairro" [(ngModel)]="endereco.bairro" required
+           #bairro="ngModel" [inputError]="bairro">
+    <invalid-feedback errorMessage="Bairro é obrigatório" [model]="bairro"></invalid-feedback>
+  </div>
+
+  <div class="col-5">
+    <label for="cidade">Cidade</label>
+    <input id="cidade" type="text" class="form-control" name="cidade" [(ngModel)]="endereco.cidade" required
+           #cidade="ngModel" [inputError]="cidade">
+    <invalid-feedback errorMessage="Cidade é obrigatório" [model]="cidade"></invalid-feedback>
+  </div>
+
+  <div class="col-2">
+    <label for="estado">Estado</label>
+    <input id="estado" type="text" class="form-control" name="estado" [(ngModel)]="endereco.estado" required
+           #estado="ngModel" [inputError]="estado">
+    <invalid-feedback errorMessage="Estado é obrigatório" [model]="estado"></invalid-feedback>
+  </div>
+
+</div>

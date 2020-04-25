@@ -1,0 +1,9 @@
+@import "../node_modules/bootstrap/dist/css/bootstrap.css";
+
+.invalid-feedback {
+  display: block;
+}
+
+label {
+  font-weight: bold;
+}

@@ -1,0 +1,52 @@
+<h1>*ngIf</h1>
+
+<div *ngIf="cursos.length > 0">
+  Há cursos
+</div>
+
+<h1>*ngFor</h1>
+
+<ul>
+  <li *ngFor="let curso of cursos, let i = index">
+    {{i+1}} - {{curso.nome}}
+  </li>
+</ul>
+
+<h1>*ngSwitch</h1>
+
+<div [ngSwitch]="cursos.length > 0">
+  <p *ngSwitchCase="true">Há cursos</p>
+  <p *ngSwitchDefault>Não há cursos</p>
+</div>
+
+<h1>Elvis Operator</h1>
+
+<ul>
+  <li *ngFor="let curso of cursos, let i = index">
+    {{i+1}} - {{curso.nome}}; Professor: {{curso.professor?.nome || '-' }}
+  </li>
+</ul>
+
+<h1>ng-content</h1>
+
+<app-exemplo-ng-content>
+  <div class="titulo">Título do painel</div>
+  <div class="corpo">Corpo do painel</div>
+</app-exemplo-ng-content>
+
+<h1>Diretiva customizada</h1>
+
+<p fundoAmarelo>
+  Texto com fundo amarelo
+</p>
+
+<p highlightMouse>Texto com highlight quando passo o mouse</p>
+
+<p highlight="'red'" [defaultColor]="'grey'">Texto com highlight com cores customizadas</p>
+
+<div *ngIf="cursos.length == 0">
+  Não há cursos
+</div>
+<div *ngElse="cursos.length == 0">
+  Há cursos
+</div>

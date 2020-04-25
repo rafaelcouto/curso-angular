@@ -1,0 +1,4 @@
+<div *ngIf="!model.valid && model.touched" class="invalid-feedback">
+  <span *ngIf="errorMessage">{{errorMessage}}</span>
+  <ng-content></ng-content>
+</div>

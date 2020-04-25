@@ -1,0 +1,27 @@
+<form #f="ngForm" (ngSubmit)="salvar()">
+
+  <div class="row">
+
+    <div class="col-6">
+      <label for="nome">Nome</label>
+      <input id="nome" type="text" class="form-control" name="nome" [(ngModel)]="usuario.nome" required #nome="ngModel"
+        [inputError]="nome">
+      <invalid-feedback errorMessage="Nome é obrigatório" [model]="nome"></invalid-feedback>
+    </div>
+
+    <div class="col-6">
+      <label for="email">Email</label>
+      <input id="email" type="email" class="form-control" name="email" [(ngModel)]="usuario.email" required email
+        #email="ngModel" [inputError]="email">
+      <invalid-feedback errorMessage="Email inválido" [model]="email"></invalid-feedback>
+    </div>
+
+  </div>
+
+  <endereco [endereco]="usuario.endereco"></endereco>
+
+  <br>
+
+  <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Salvar</button>
+
+</form>
